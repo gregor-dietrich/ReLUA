@@ -1,0 +1,34 @@
+{
+	"name": "ReLUA",
+	"description": "Reloads the game's and all mods' LUA via keybind.",
+	"author": "Takku\nBangL (Leave Lobby Prompt; Creative Input)\nFishTaco (Instant Restart Script)",
+	"contact": "http://steamcommunity.com/id/takku/",
+	"version": "4",
+	"blt_version": 2,
+	"image" : "re.png",
+	"color" : "0 0.47 1",
+	"updates" : 
+	[
+		{
+			"identifier" : "ReLUA"
+		}
+	],
+	"hooks" : [
+		{
+			"hook_id" : "lib/managers/menumanager",
+			"script_path" : "menumanager.lua"
+		}
+	],
+	"keybinds": 
+	[
+		{
+			"keybind_id": "lua_reload_button",
+			"name": "Reload LUA",
+			"description": "Reload the game's LUA while in main menu.",
+			"script_path": "re.lua",
+			"run_in_menu": true,
+			"run_in_game": true,
+			"localized": false
+		}
+	]
+}
