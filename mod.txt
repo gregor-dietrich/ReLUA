@@ -1,9 +1,9 @@
 {
 	"name": "ReLUA",
 	"description": "Reloads the game's and all mods' LUA via keybind.",
-	"author": "Takku\nBangL (Leave Lobby Prompt; Creative Input)\nFishTaco (Instant Restart Script)",
+	"author": "Takku (code, idea)\nBangL (more and refactored code)\nFishTaco (Instant Restart Script)",
 	"contact": "http://steamcommunity.com/id/takku/",
-	"version": "4",
+	"version": "5",
 	"blt_version": 2,
 	"image" : "re.png",
 	"color" : "0 0.47 1",
