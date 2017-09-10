@@ -7,8 +7,7 @@
 	"blt_version": 2,
 	"image" : "re.png",
 	"color" : "0 0.47 1",
-	"updates" : 
-	[
+	"updates" : [
 		{
 			"identifier" : "ReLUA"
 		}
