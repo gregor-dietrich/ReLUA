@@ -18,8 +18,7 @@
 			"script_path" : "menumanager.lua"
 		}
 	],
-	"keybinds": 
-	[
+	"keybinds": [
 		{
 			"keybind_id": "lua_reload_button",
 			"name": "Reload LUA",
