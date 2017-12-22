@@ -1,3 +1,1 @@
-- Auto-Reconnect as client (probably based on Luffy's Reconnect To Server)
-- Confirmation prompts for reloading LUA in loadout and in heists
 - Mod Options for disabling confirmation prompts
