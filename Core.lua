@@ -3,7 +3,7 @@ if not ReLUA then
 	ReLUA = {}
 	ReLUA._lua_path = ModPath .. "Hooks/"
 	ReLUA._room_file = SavePath .. "ReLUALastRoomID.txt"
-	ReLUA._room_id = 0
+	ReLUA._room_id = nil
 
 	ReLUA._hook_files = {
 		["lib/setups/setup"]								= "setup.lua",
@@ -50,15 +50,15 @@ if not ReLUA then
 	end
 
 	function ReLUA:set_room_id(room_id)
-		self._room_id = room_id
+		ReLUA._room_id = room_id
 	end
 
 	function ReLUA:reset_client()
-		if self._room_id > 0 then
+		if ReLUA._room_id then
 			-- Save Room ID
-			local file = io.open(self._room_file, "w")
+			local file = io.open(ReLUA._room_file, "w")
 			if file then
-				room_id = file:write(tostring(self._room_id))
+				file:write(ReLUA._room_id)
 				file:close()
 			end
 			-- Disconnect
@@ -70,11 +70,11 @@ if not ReLUA then
 
 	function ReLUA:reconnect()
 		-- Reconnect
-		local file = io.open(self._room_file, "r")
+		local file = io.open(ReLUA._room_file, "r")
 		if file then
 			local room_id = file:read("*all")
 			file:close()
-			SystemFS:delete_file(self._room_file)
+			SystemFS:delete_file(ReLUA._room_file)
 			managers.network.matchmake:join_server(room_id)
 		end
 	end
