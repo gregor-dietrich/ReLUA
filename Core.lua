@@ -1,7 +1,7 @@
 
 if not ReLUA then
 	ReLUA = {}
-	ReLUA._lua_path = ModPath .. "Hooks/"
+	ReLUA._lua_path = ModPath .. "hooks/"
 	ReLUA._room_file = SavePath .. "ReLUALastRoomID.txt"
 	ReLUA._room_id = nil
 
