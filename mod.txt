@@ -11,8 +11,8 @@
 		{"identifier" : "ReLUA"}
 	],
 	"hooks" : [
-		{"script_path" : "core.lua", 		"hook_id" : "lib/setups/setup"},
-		{"script_path" : "core.lua", 		"hook_id" : "lib/network/matchmaking/networkmatchmakingsteam"}
+		{"script_path" : "Core.lua", 		"hook_id" : "lib/setups/setup"},
+		{"script_path" : "Core.lua", 		"hook_id" : "lib/network/matchmaking/networkmatchmakingsteam"}
 	],
 	"keybinds": [
 		{"keybind_id": "lua_reload_button",	"name": "Reload LUA",
