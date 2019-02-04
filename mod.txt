@@ -8,7 +8,7 @@
 	"image" : "re.png",
 	"color" : "0 0.47 1",
 	"updates" : [
-		{"identifier" : "ReLUA"}
+		{"identifier" : "relua_bangl"}
 	],
 	"hooks" : [
 		{"script_path" : "Core.lua",		"hook_id" : "lib/managers/localizationmanager"},
