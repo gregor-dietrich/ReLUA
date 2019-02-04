@@ -1,0 +1,7 @@
+{
+	"relua_options": "ReLUA options",
+	"relua_options_desc": "",
+
+	"relua_show_warn": "Show warnings",
+	"relua_show_warn_desc": "Show warnings when restarting or reconnecting"
+}

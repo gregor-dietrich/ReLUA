@@ -1,0 +1,17 @@
+{
+	"menu_id": "relua_options_menu",
+	"parent_menu_id": "blt_options",
+	"title": "relua_options",
+	"description": "relua_options_desc",
+	"items": [
+		{
+			"type": "toggle",
+			"id": "relua_show_warn",
+			"title": "relua_show_warn",
+			"description": "relua_show_warn_desc",
+			"callback": "relua_menu_callback",
+			"value": "relua_show_warn",
+			"default_value": true
+		}
+	]
+}

@@ -4,11 +4,15 @@ if game_state_machine and Network and ReLUA then
 	if state == "menu_main" then
 		-- menu
 		if not Network:multiplayer() then
-			-- main menu
+			-- RESTART: main menu
 			ReLUA:reset_menu()
 		else
-			-- lobby
-			ReLUA:yesno(ReLUA.reset_lobby)
+			-- RESTART: lobby
+			if ReLUA:GetOption("relua_show_warn") then
+				ReLUA:yesno(ReLUA.reset_lobby)
+			else
+				ReLUA:reset_lobby()
+			end
 		end
 	elseif state == "ingame_lobby_menu" or
 			state == "ingame_waiting_for_respawn" or
@@ -17,11 +21,19 @@ if game_state_machine and Network and ReLUA then
 			state == "ingame_standard" then
 		-- in game
 		if Network:is_server() then
-			-- as host
-			ReLUA:yesno(ReLUA.reset_server)
+			-- RESTART: as host
+			if ReLUA:GetOption("relua_show_warn") then
+				ReLUA:yesno(ReLUA.reset_server)
+			else
+				ReLUA:reset_server()
+			end
 		else
-			-- as client
-			ReLUA:yesno(ReLUA.reset_client)
+			-- RESTART: as client (reconnect)
+			if ReLUA:GetOption("relua_show_warn") then
+				ReLUA:yesno(ReLUA.reset_client)
+			else
+				ReLUA:reset_client()
+			end
 		end
 	elseif state == "disconnected" then
 		-- do nothing

@@ -3,7 +3,7 @@
 	"description": "Reloads the game's and all mods' LUA via keybind.",
 	"author": "Takku (code, idea)\nBangL (more and refactored code)\nFishTaco (Instant Restart Script)",
 	"contact": "http://steamcommunity.com/id/takku/",
-	"version": "5",
+	"version": "6",
 	"blt_version": 2,
 	"image" : "re.png",
 	"color" : "0 0.47 1",
@@ -11,6 +11,8 @@
 		{"identifier" : "ReLUA"}
 	],
 	"hooks" : [
+		{"script_path" : "Core.lua",		"hook_id" : "lib/managers/localizationmanager"},
+		{"script_path" : "Core.lua",		"hook_id" : "lib/managers/menumanager"},
 		{"script_path" : "Core.lua", 		"hook_id" : "lib/setups/setup"},
 		{"script_path" : "Core.lua", 		"hook_id" : "lib/network/matchmaking/networkmatchmakingsteam"}
 	],
