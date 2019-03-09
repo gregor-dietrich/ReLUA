@@ -24,14 +24,10 @@ if not ReLUA then
 	end
 
 	function ReLUA:reset_menu()
-		if setup and setup.load_start_menu then
-			setup:load_start_menu()
+		if setup and setup.quit_to_main_menu then
+			setup.exit_to_main_menu = true
+			setup:quit_to_main_menu()
 		end
-	end
-
-	function ReLUA:reset_lobby()
-		managers.menu:get_menu("menu_main").callback_handler:_dialog_leave_lobby_yes()
-		ReLUA:reset_menu()
 	end
 
 	function ReLUA:reset_server()
@@ -43,17 +39,47 @@ if not ReLUA then
 		end
 		if all_synced then
 			-- Restart
-			managers.game_play_central:restart_the_game()
+			if not game_state_machine then
+				do return end
+			end
+			local state = game_state_machine:current_state_name()
+			if state == "ingame_waiting_for_players" or
+					state == "ingame_lobby_menu" or
+					state == "empty" then
+				do return end
+			end
+			local job = managers.raid_job
+			if not job or job:is_in_tutorial() or (not job:is_camp_loaded() and job:current_job() and job:current_job().consumable) then
+				do return end
+			end
+			if job:is_camp_loaded() then
+				log("reload camp")
+				if Global.game_settings.single_player then
+					RaidMenuCallbackHandler:raid_play_offline()
+				elseif Network:is_server() then
+					RaidMenuCallbackHandler:raid_play_online()
+				end
+			else
+				log("restart mission")
+				if Global.game_settings.single_player then
+					managers.game_play_central:restart_the_mission()
+				elseif Network:is_server() then
+					managers.vote:restart_mission_auto()
+				end
+			end
+			managers.raid_menu:on_escape()
 		else
 			managers.chat:_receive_message(1, "[ReLUA]", "Cannot restart, a player may be loading.", Color.red)
 		end
 	end
 
 	function ReLUA:set_room_id(room_id)
+		-- FIXME
 		ReLUA._room_id = room_id
 	end
 
 	function ReLUA:reset_client()
+		-- FIXME
 		if ReLUA._room_id then
 			-- Save Room ID
 			local file = io.open(ReLUA._room_file, "w")
@@ -69,6 +95,7 @@ if not ReLUA then
 	end
 
 	function ReLUA:reconnect()
+		-- FIXME
 		-- Reconnect
 		local file = io.open(ReLUA._room_file, "r")
 		if file then
